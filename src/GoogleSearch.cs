@@ -25,7 +25,13 @@ namespace TimHanewich.Google
             req.RequestUri = new Uri("https://www.google.com/search?q=" + QueryHtml);
             HttpResponseMessage response = await hc.SendAsync(req);
             string web = await response.Content.ReadAsStringAsync();
-
+    
+            GoogleSearch ToReturn = ParseWebContent(web);
+            return ToReturn;
+        }
+    
+        private static GoogleSearch ParseWebContent(string web)
+        {
             //Tools
             int loc1 = 0;
             int loc2 = 0;

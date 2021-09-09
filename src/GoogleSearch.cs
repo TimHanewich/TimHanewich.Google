@@ -30,7 +30,7 @@ namespace TimHanewich.Google
             return ToReturn;
         }
     
-        private static GoogleSearch ParseWebContent(string web)
+        public static GoogleSearch ParseWebContent(string web)
         {
             //Tools
             int loc1 = 0;

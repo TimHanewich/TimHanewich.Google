@@ -56,7 +56,7 @@ namespace TimHanewich.Google
                     loc1 = parts[t].IndexOf("href");
                     loc1 = parts[t].IndexOf("\"", loc1 + 1);
                     loc2 = parts[t].IndexOf("\"", loc1 + 1);
-                    string url = parts[t].Substring(loc1 + 1, loc2 - loc1 - 1);
+                    string url = "https://google.com" + parts[t].Substring(loc1 + 1, loc2 - loc1 - 1);
 
                     //Get the title
                     loc1 = parts[t].IndexOf("zBAuLc");
@@ -64,6 +64,7 @@ namespace TimHanewich.Google
                     loc1 = parts[t].IndexOf(">", loc1 + 1);
                     loc2 = parts[t].IndexOf("<", loc1 + 1);
                     string title = parts[t].Substring(loc1 + 1, loc2 - loc1 - 1);
+                    title = HttpUtility.HtmlDecode(title);
 
                     //Get the description
                     loc1 = parts[t].IndexOf("BNeawe s3v9rd AP7Wnd");
@@ -71,12 +72,18 @@ namespace TimHanewich.Google
                     loc1 = parts[t].IndexOf(">", loc1 + 1);
                     loc2 = parts[t].IndexOf("<", loc1 + 1);
                     string description = parts[t].Substring(loc1 + 1, loc2 - loc1 - 1);
+                    description = HttpUtility.HtmlDecode(description);
 
-                    SearchResult sr = new SearchResult();
-                    sr.Url = url;
-                    sr.Title = title;
-                    sr.Description = description;
-                    Results.Add(sr);
+
+                    //Add if a title is present
+                    if (title != "")
+                    {
+                        SearchResult sr = new SearchResult();
+                        sr.Url = url;
+                        sr.Title = title;
+                        sr.Description = description;
+                        Results.Add(sr);
+                    }
                 }
             }
 

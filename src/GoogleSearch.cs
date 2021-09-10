@@ -58,6 +58,22 @@ namespace TimHanewich.Google
                     loc2 = parts[t].IndexOf("\"", loc1 + 1);
                     string url = "https://google.com" + parts[t].Substring(loc1 + 1, loc2 - loc1 - 1);
 
+                    //If the title contains a referal, just take the url itself
+                    if (url.Contains("url?q="))
+                    {
+                        loc1 = url.IndexOf("url?q=");
+                        loc1 = url.IndexOf("=");
+                        url = url.Substring(loc1 + 1);
+                    }
+
+                    //Remove the last tag that google attached
+                    loc1 = url.IndexOf("&amp;sa=");
+                    if (loc1 != -1)
+                    {
+                        url = url.Substring(0, loc1);
+                    }
+
+                    
                     //Get the title
                     loc1 = parts[t].IndexOf("zBAuLc");
                     loc1 = parts[t].IndexOf("<div class", loc1 + 1);
@@ -65,6 +81,8 @@ namespace TimHanewich.Google
                     loc2 = parts[t].IndexOf("<", loc1 + 1);
                     string title = parts[t].Substring(loc1 + 1, loc2 - loc1 - 1);
                     title = HttpUtility.HtmlDecode(title);
+
+                    
 
                     //Get the description
                     loc1 = parts[t].IndexOf("BNeawe s3v9rd AP7Wnd");

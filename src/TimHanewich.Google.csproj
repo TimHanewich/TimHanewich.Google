@@ -2,6 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Version>0.1.0</Version>
+    <Authors>Tim Hanewich</Authors>
+    <Company>Tim Hanewich</Company>
+    <Description>Lightweight package for using Google's search engine</Description>
+    <PackageLicenseFile>license.md</PackageLicenseFile>
+    <Copyright>Tim Hanewich</Copyright>
+    <PackageIcon>icon.jpg</PackageIcon>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <FileVersion>0.0.0.0</FileVersion>
+    <RepositoryUrl>https://github.com/TimHanewich/TimHanewich.Google</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>google</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\license.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="icon.jpg">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
